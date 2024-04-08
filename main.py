@@ -1,4 +1,4 @@
-# By Jeremy823 on Mon 8 Apr 2024
+# By Jeremy-JYL on Mon 8 Apr 2024
 # https://github.com/Jeremy-JYL/ESP32-Micropython-NTP-Clock
 
 import network
