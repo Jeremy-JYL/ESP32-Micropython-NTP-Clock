@@ -44,7 +44,7 @@ def convert_day(year, month, day):
     J = year // 100
     h = (day + (13 * (month + 1)) // 5 + K + K // 4 + J // 4 + 5 * J) % 7
 
-    days = ["SAT", "SUN", "MON", "TUE", "WED", "THU", "FRI"]
+    days = ["Sed", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"]
     return days[h]
 
 def am_pm(hours, minutes, seconds):
@@ -59,6 +59,23 @@ def am_pm(hours, minutes, seconds):
     # Return the time in 12-hour format
     return '{:02d}:{:02d}:{:02d} {}'.format(hours, minutes, seconds, period)
 
+def convert_month(month):
+    table = {
+        1: "Jan",
+        2: "Feb",
+        3: "Mar",
+        4: "Apr",
+        5: "May",
+        6: "Jun",
+        7: "Jul",
+        8: "Aug",
+        9: "Sep",
+        10: "Oct",
+        11: "Nov",
+        12: "Dec"
+    }
+    return table[month]
+
 # Main loop
 while True:
     if p0.value() == 1: # Checking the Sync Pin
@@ -69,4 +86,4 @@ while True:
     year, month, days, hours, minutes, seconds, _, _ = time.localtime(time.time() + (UTC_OFFSET * 60 * 60))
     md = convert_day(year, month, days)
     lcd.puts("{}".format(am_pm(hours, minutes, seconds)))
-    lcd.puts("{} {} {} {}".format(year, md, days, month), 1)
+    lcd.puts("{} {} {} {}".format(year, md, days, convert_month(month)), 1)
